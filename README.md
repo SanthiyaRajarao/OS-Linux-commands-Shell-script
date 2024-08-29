@@ -303,40 +303,73 @@ sed -n -e '2,/Joe/p' file23
 sed -n -e '/tom/,/Joe/p' file23
 ## OUTPUT
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/40140806-22e7-4b7a-811e-b33571572d5e)
 
 
 seq 10 
 ## OUTPUT
-
-
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
 
 seq 10 | sed -n '4,6p'
 ## OUTPUT
-
+```
+4
+5
+6
+```
 
 
 seq 10 | sed -n '2,~4p'
 ## OUTPUT
-
+```
+2
+3
+4
+```
 
 
 seq 3 | sed '2a hello'
 ## OUTPUT
-
+```
+1
+2
+hello
+3
+```
 
 
 seq 2 | sed '2i hello'
 ## OUTPUT
-
-
+```
+1
+hello
+2
+```
 seq 10 | sed '2,9c hello'
 ## OUTPUT
-
-
+```
+1
+hello
+10
+```
 sed -n '2,4{s/^/$/;p}' file23
 ## OUTPUT
-
+```
+$1001 | Ram | 10000 | HR
+$1002 | tom |  5000 | Admin
+$1003 | Joe |  7000 | Developer
+```
 
 
 sed -n '2,4{s/$/*/;p}' file23
@@ -366,7 +399,13 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+```
 
 
 #Using tr command
@@ -389,18 +428,25 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
+ ```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 
  
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
+![image](https://github.com/user-attachments/assets/3e5d78d4-e355-4516-b0de-3601f0201f12)
 
 mkdir backupdir
  
@@ -409,18 +455,59 @@ mv backup.tar backupdir
 tar -tvf backup.tar
 ## OUTPUT
 
+![image](https://github.com/user-attachments/assets/7abf1f6c-9761-45e0-b9f9-e6cc5e87895e)
 
 tar -xvf backup.tar
 ## OUTPUT
+![Uploading image.png…]()
+
 
 gzip backup.tar
 
 ls .gz
 ## OUTPUT
- 
+```
+argshift1.sh   file11        fornested1.sh  OS-Linux-commands-Shell-script
+argshift.sh    file2         funcex.sh      palindrome.sh
+backupdir      file21        herecheck.txt  psswdperm.sh
+backup.tar.gz  file22        ifcompound.sh  scriptest.sh
+casecheck.sh   file23        ifnested1.sh   strcomp.sh
+cities         forbreak.sh   ifnested.sh    untiltest.sh
+data.dat       forctype.sh   iftest.sh      urllist.txt
+elifcheck.sh   forin1.sh     my-script.sh   whiletest
+exread1.sh     forin2.sh     nc.awk         whiletest.sh
+exread.sh      forin3.sh     newfile
+file1          forinfile.sh  one
+```
+gunzip backup.tar.gz 
 gunzip backup.tar.gz
 ## OUTPUT
-
+```
+argshift1.sh   file11        fornested1.sh  OS-Linux-commands-Shell-script
+argshift.sh    file2         funcex.sh      palindrome.sh
+backupdir      file21        herecheck.txt  psswdperm.sh
+backup.tar.gz  file22        ifcompound.sh  scriptest.sh
+casecheck.sh   file23        ifnested1.sh   strcomp.sh
+cities         forbreak.sh   ifnested.sh    untiltest.sh
+data.dat       forctype.sh   iftest.sh      urllist.txt
+elifcheck.sh   forin1.sh     my-script.sh   whiletest
+exread1.sh     forin2.sh     nc.awk         whiletest.sh
+exread.sh      forin3.sh     newfile
+file1          forinfile.sh  one
+(base) sec@sec-ThinkPad-E15-Gen-4:~/os/ex01/backupdir$ gunzip backup.tar.gz
+(base) sec@sec-ThinkPad-E15-Gen-4:~/os/ex01/backupdir$ ls
+argshift1.sh  file11        fornested1.sh  OS-Linux-commands-Shell-script
+argshift.sh   file2         funcex.sh      palindrome.sh
+backupdir     file21        herecheck.txt  psswdperm.sh
+backup.tar    file22        ifcompound.sh  scriptest.sh
+casecheck.sh  file23        ifnested1.sh   strcomp.sh
+cities        forbreak.sh   ifnested.sh    untiltest.sh
+data.dat      forctype.sh   iftest.sh      urllist.txt
+elifcheck.sh  forin1.sh     my-script.sh   whiletest
+exread1.sh    forin2.sh     nc.awk         whiletest.sh
+exread.sh     forin3.sh     newfile
+file1         forinfile.sh  one
+```
  
 # Shell Script
 ```
@@ -480,11 +567,29 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-
+```
+./scriptest.sh: line 1: #!/bin/sh: No such file or directory
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $\# is  1#
+The $$ is  14337
+    PID TTY          TIME CMD
+  13614 pts/1    00:00:00 bash
+  14337 pts/1    00:00:00 bash
+  14340 pts/1    00:00:00 ps
+```
  
 ls file1
 ## OUTPUT
-
+```
+file1
+echo $?
+```
 echo $?
 ## OUTPUT 
 ./one
@@ -492,12 +597,15 @@ bash: ./one: Permission denied
  
 echo $?
 ## OUTPUT 
- 
+```
+127
 abcd
- 
+ ```
 echo $?
  ## OUTPUT
-
+```
+127
+```
 
  
 # mis-using string comparisons
@@ -536,7 +644,11 @@ chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-
+```
+./strcomp.sh: line 1: #!/bin/bash: No such file or directory
+baseball is less than hockey
+./strcomp.sh: line 10: ^d: command not found
+```
 
 # check file ownership
 cat < psswdperm.sh 
@@ -609,7 +721,13 @@ fi
 
 ./ifnested.sh 
 ## OUTPUT
-
+```
+./ifnested.sh: line 1: #!/bin/bash: No such file or directory
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
+./ifnested.sh: line 18: ^d: command not found
+```
 
 
 # using numeric test comparisons
@@ -1060,7 +1178,23 @@ set +x
 ```
 ## OUTPUT
  ./argshift.sh 1 2 3
- 
+ ```
+ ./argshift.sh 1 2 3
+ + ((  3  ))
++ echo 1
+1
++ shift
++ ((  2  ))
++ echo 2
+2
++ shift
++ ((  1  ))
++ echo 3
+3
++ shift
++ ((  0  ))
++ set +x
+```
  
 cat > nc.awk
 ```bash
@@ -1091,7 +1225,21 @@ ubcdfghj
 ```
 awk -f nc.awk data.dat
 ## OUTPUT 
- 
+```
+ 7 	 bcdfghj
+8 	 abcdfghj
+7 	 bcdfghj
+8 	 ebcdfghj
+7 	 bcdfghj
+8 	 ibcdfghj
+7 	 bcdfghj
+8 	 obcdfghj
+7 	 bcdfghj
+8 	 ubcdfghj
+total characters 75
+Number of Lines are 10
+No of Words count: 10
+``` 
 cat > palindrome.sh
 ```bash
 #num=545
@@ -1118,7 +1266,11 @@ else
 fi
 ```
 ## OUTPUT 
-
+```
+Enter the number
+45
+Number is NOT palindrome
+```
 
 # RESULT:
 The Commands are executed successfully.
