@@ -457,9 +457,6 @@ tar -tvf backup.tar
 
 ![image](https://github.com/user-attachments/assets/7abf1f6c-9761-45e0-b9f9-e6cc5e87895e)
 
-tar -xvf backup.tar
-## OUTPUT
-![Uploading image.png…]()
 
 
 gzip backup.tar
